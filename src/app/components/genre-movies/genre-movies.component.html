@@ -1,0 +1,57 @@
+<div class="container progressBar" [hidden]="!loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div class="container" *ngIf="movies?.length">
+
+    <mat-table [dataSource]="movies" multiTemplateDataRows>
+        <ng-container matColumnDef="id">
+            <mat-header-cell fxFlex="100px" *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell fxFlex="100px" *matCellDef="let movie">{{movie.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+            <mat-cell class="pointerCell" (click)="getMovieDetails(movie.id)" *matCellDef="let movie">{{movie.title}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="release_date">
+            <mat-header-cell *matHeaderCellDef>Release Date</mat-header-cell>
+            <mat-cell *matCellDef="let movie">{{movie.release_date}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="overview">
+            <mat-header-cell *matHeaderCellDef>Overview</mat-header-cell>
+            <mat-cell class="pointerCell overviewCell" *matCellDef="let movie">
+                <div class="tooltiptext">{{ (movie.overview.length>40) ? (movie.overview | slice:0:37)+'...' : (movie.overview) }}
+                    <span class="tooltipcontent">{{movie.overview}}</span>
+                </div>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+            <mat-cell *matCellDef="let movie" [attr.colspan]="displayedColumns.length">
+                <div class="movie-detail" [@detailExpand]="movie == expandedMovie ? 'expanded' : 'collapsed'">
+                    <div class="" *ngIf="movieDetails">
+                        <img src="http://image.tmdb.org/t/p/w185/{{movieDetails.poster_path}}" alt="Movie poster">
+                        <div class="movieInfo">
+                            <div class="movieInfoKey">Tagline</div><div class="movieInfoValue">{{movieDetails.tagline}}</div>
+                            <div class="movieInfoKey">Budget (USD)</div><div class="movieInfoValue">{{movieDetails.budget}}</div>
+                            <div class="movieInfoKey">Homepage</div><div class="movieInfoValue"><a href="{{movieDetails.homepage}}" target="_blank">{{movieDetails.homepage}}</a></div>
+                        </div>
+                    </div>
+                </div>
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let movie; columns: displayedColumns;"
+            class="movie-row"
+            [class.expanded-row]="expandedMovie === movie"
+            (click)="expandedMovie = expandedMovie === movie ? null : movie">
+        </mat-row>
+        <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="movie-detail-row"></mat-row>
+    </mat-table>
+
+    <mat-paginator id="paginator" [length]="length" [pageSize]="pageSize" [pageIndex]="pageIndex" (page)="pageChange($event)"></mat-paginator>
+
+</div>

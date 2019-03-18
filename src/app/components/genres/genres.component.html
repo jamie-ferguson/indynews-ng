@@ -1,0 +1,19 @@
+<div class="container">
+
+    <div class="">
+        <mat-form-field>
+        <input matInput placeholder="Search for Movie" [(ngModel)]="searchInputValue" #searchInput>
+        </mat-form-field>
+        <button mat-button color="primary" (click)="search(searchInput.value)">Search</button>
+    </div>
+
+    <div class="">
+        <mat-form-field>
+          <mat-select [disabled]="isGenreDisabled ? '' : null" placeholder="Select Genre" [(ngModel)]="selectedGenreValue" (selectionChange)="genreChange($event.value)">
+            <mat-option *ngFor="let genre of genres" [value]="genre.id">
+              {{genre.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+</div>

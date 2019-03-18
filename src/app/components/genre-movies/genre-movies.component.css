@@ -1,0 +1,83 @@
+/* Tooltip container */
+.tooltiptext {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltiptext .tooltipcontent {
+  visibility: hidden;
+  width: 40rem;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltiptext:hover .tooltipcontent {
+  visibility: visible;
+  top: -5px;
+  right: 105%;
+
+}
+
+.progressBar{
+    min-height: 10px;
+}
+.mat-progress-bar {
+    width: 25%;
+}
+
+
+mat-header-cell.mat-column-id, mat-cell.mat-column-id {
+    max-width: 130px;
+}
+
+mat-cell.mat-column-title {
+    color: cornflowerblue;
+}
+
+mat-cell.pointerCell {
+    cursor: pointer;
+}
+
+mat-cell.overviewCell {
+  overflow: visible;
+}
+
+
+mat-row.movie-detail-row {
+  min-height: 0;
+}
+
+mat-row.movie-row {
+  border-bottom-width: 0;
+}
+
+mat-row.movie-row:not(.expanded-row):hover {
+  background: #f5f5f5;
+}
+
+mat-row.movie-row:not(.expanded-row):active {
+  background: #efefef;
+}
+.movieInfo{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 3rem;
+}
+
+.movieInfoKey:not(:first-child){
+    margin-top: 2rem;
+}
+
+.movieInfoValue, .movieInfoValue a{
+    color: cadetblue;
+}
