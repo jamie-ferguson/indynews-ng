@@ -60,6 +60,10 @@ mat-row.movie-detail-row {
     padding-bottom: 10px;
 }
 
+.movieImageAndInfo img{
+    margin-right: 1rem;
+}
+
 mat-row.movie-row {
   border-bottom-width: 0;
 }
@@ -71,14 +75,14 @@ mat-row.movie-row:not(.expanded-row):hover {
 mat-row.movie-row:not(.expanded-row):active {
   background: #efefef;
 }
+
 .movieInfo{
     display: inline-block;
     vertical-align: top;
-    margin-left: 3rem;
 }
 
 .movieInfoKey:not(:first-child){
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .movieInfoValue, .movieInfoValue a{
