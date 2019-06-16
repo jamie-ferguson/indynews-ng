@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ApiService {
 
   //private laravelAPIURL: string = "http://www.localhost:7888/api/";
-  private laravelAPIURL: string = "http://88.80.187.165/api/";
+  private laravelAPIURL: string = "https://lawthorn.com/api/";
   private searchOrGenre = '';
   private currentSearchTerm = '';
   private currentGenre = 0;
